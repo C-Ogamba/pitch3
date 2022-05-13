@@ -1,0 +1,21 @@
+<table class="table table-hover">
+    <tr valign='top'>
+        <td width='70px'>
+            <img src=" {{ pitch.author.avatar(36) }} ">
+        </td>
+        <td>
+            <span>
+                <a href="{{ url_for('profile', username=pitch.author.username) }}">
+                    {{ pitch.author.username }}
+                </a>
+            </span>
+            said
+            <span>
+            {{ moment(pitch.timestamp).fromNow() }}:
+            </span><br>
+            <span>
+                {{ pitch.body }}                    
+            </span>
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_context %}
+<div class="row">
+    <div class="col-sm-4">
+        <!-- Empty column -->
+    </div>
+    <div class="col-sm-4 my-form">
+        {{ wtf.quick_form(form) }}
+    </div>
+    <div class="col-sm-4">
+        <!-- Empty column -->
+    </div>
+</div>
+
+<!-- Pitches -->
+<div class="row">
+    <div class="col-sm-12">
+        {% for pitch in pitches %}
+            {% include '_pitches.html' %}
+        {% endfor %}
+    </div>
+</div>
+<!-- End of pitches -->
+
+<!-- Pagination Links -->
+<nav aria-label="...">
+    <ul class="pager">
+        <li class="previous{% if not prev_url %} disabled{% endif %}">
+            <a href="{{ prev_url or '#' }}">
+                <span aria-hidden="true">&larr;</span> Newer Pitches
+            </a>
+        </li>
+        <li class="next{% if not next_url %} disabled{% endif %}">
+            <a href="{{ next_url or '#' }}">
+                Older Pitches <span aria-hidden="true">&rarr;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- End of pitch pagination -->
+
+{% endblock %}
